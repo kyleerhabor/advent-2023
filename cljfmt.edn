@@ -1,0 +1,3 @@
+{:remove-multiple-non-indenting-spaces? true
+ :indents ^:replace {#_{:clj-kondo/ignore [:syntax]}
+                     #"^." [[:inner 0]]}}
