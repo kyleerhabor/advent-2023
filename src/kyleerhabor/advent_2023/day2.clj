@@ -3,12 +3,6 @@
    [clojure.string :as str]
    [kyleerhabor.advent-2023.core :as core]))
 
-(defn zeroing [n]
-  (or n 0))
-
-(defn sum [coll]
-  (reduce + 0 coll))
-
 (defn product [coll]
   (reduce * coll))
 
@@ -20,7 +14,7 @@
 (defn merge-cubes [cubes]
   (reduce
     (fn [m cube]
-      (update m (:name cube) #(+ (zeroing %) (:count cube))))
+      (update m (:name cube) #(+ (core/zeroing %) (:count cube))))
     {}
     cubes))
 
@@ -40,7 +34,10 @@
     (fn [{red "red"
           green "green"
           blue "blue"}]
-      (and (<= (zeroing red) 12) (<= (zeroing green) 13) (<= (zeroing blue) 14)))
+      (and
+        (<= (core/zeroing red) 12)
+        (<= (core/zeroing green) 13)
+        (<= (core/zeroing blue) 14)))
     reveals))
 
 (defn part1 [puzzle]
@@ -48,14 +45,14 @@
     (map parse-game)
     (filter #(possible? (:reveals %)))
     (map :id)
-    sum))
+    core/sum))
 
 (defn part2 [puzzle]
   (->> (str/split-lines puzzle)
     (map parse-game)
     (map #(reduce (partial merge-with max) (:reveals %)))
     (map (comp product vals))
-    sum))
+    core/sum))
 
 (defn -main []
   (let [puzzle (core/input "puzzles/cube-conundrum.txt")]

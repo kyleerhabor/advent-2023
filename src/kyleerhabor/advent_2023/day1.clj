@@ -74,7 +74,7 @@
     str/split-lines
     (map numerics)
     (map calibration)
-    (reduce +)))
+    core/sum))
 
 (defn part2 [puzzle]
   (->> puzzle
@@ -90,7 +90,7 @@
                           numerics
                           alphas))})))
     (map calibration)
-    (reduce +)))
+    core/sum))
 
 (defn -main []
   (let [puzzle (core/input "puzzles/trebuchet.txt")]
