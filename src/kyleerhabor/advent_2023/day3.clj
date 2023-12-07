@@ -105,9 +105,12 @@
 
 (defn -main []
   (let [puzzle (core/input "puzzles/gear-ratios.txt")]
-    (part1 puzzle)))
+    (part1 puzzle)
+    (part2 puzzle)))
 
 (comment
   (def puzzle (core/input "puzzles/gear-ratios.txt"))
+  
+  (time (part2 puzzle))
   
   (def line "...733.......289..262.....520..................161.462..........450.........................183............................................."))
